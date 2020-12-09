@@ -18,11 +18,66 @@
 - 采用交互式方式实例化某学生；
 - 设计程序完成上述的业务逻辑处理，并且把“古诗处理后的输出”结果存储到学生基本信息所在的文本文件A中。
 ## 4.实验过程
-
+#### 1.	建立学生类，要求如下：
+##### 1)	设立带有修饰符private的字符串型变量name，number，team
+##### 2)	创建变量对应的set与get函数，用来赋值与获取
+##### 3)	利用toString来复写学生类，方便后面的写入文件
+#### 2.	设计Test类，要求如下：
+##### 1)	设立StringBuffer类ReadTxt（String path）函数，用来读取并处理文件格式。
+###### A.	利用FileInputStream将所定地址中的文件打开，并以字节形式进行读取
+###### B.	利用InputStreamReader将上述的字节流来解码为字符型
+###### C.	定义足够大的字符型数组chars
+###### D.	定义StringBuffer型变量s
+###### E.	通过遍历将B中的字符流存入C中所建立的字符型数组中
+###### F.	利用chars的数组下标和单个数组下标中的元素，通过循环将数组中的元素存入D中建立的字符串s
+###### G.	在F中的循环中添加if来判断是否在字符串中添加标点与换行
+###### H.	返回处理好的字符串s （return s）
+##### 2)	主函数main，要求：
+###### A.	调用ReadTxt函数
+###### B.	将函数的值赋值给变量s（StringBuffer类型）
+###### C.	建立while循环，利用switch和if来完成对s中出现字或词的次数查询
+###### D.	在while中建立scanner类用于用户输入所需功能代码，1为查询，2为退出
+###### E.	利用pattern和matcher方法，通过正则表达式来统计古诗中字或词出现的次数
+###### F.	通过if与matcher方法来判断古诗中是否有输入的字或词
+###### G.	通过for与if来统计同一字或词出现的次数
+###### H.	初始化学生类对象
+###### I.	通过scanner与学生类中set函数来实例化学生类对象
+###### J.	添加try catch来对输入的值进行异常处理，并添加自定义异常与正则表达式，直到用户正确输入后，程序才会向下运行
+###### K.	将学生类对象用append添加到s中，并通过writer来写入到文件中
 ## 5.核心代码
-
+#### 以下代码展示了Java如何读取文件，如何处理文件中的字符串，利用字节流来读取文件，以及用字符流来将字节转换为字符，并将字符流存储在字符型数组中，并结合数组下标来将处理好的字符赋值在动态字符串中。
+```
+public static StringBuffer ReadTxt(String path) {
+        StringBuffer s = new StringBuffer();
+        // 读取文件内容 (输入流)
+        try {
+            FileInputStream out = new FileInputStream(path);
+            InputStreamReader isr = new InputStreamReader(out);
+            char[] chars = new char[9999999];
+            int ch = 0;
+            int i = 0;
+            while ((ch = isr.read()) != -1) {
+                chars[i] = (char) ch;
+                i++;
+            }
+            for (int j = 0; j < i; j++) {
+                s.append(chars[j]);
+                if ((j + 1) % 7 == 0 && (j + 1) % 2 == 0) {
+                    s.append("。" + "\n");
+                }
+                if ((j + 1) % 7 == 0 && (j + 1) % 2 != 0) {
+                    s.append("，");
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("1");
+        }
+        return s;
+    }
+```
 
 ## 6.结果截图
 
 ## 7.实验感想
+#### 最后一次试验了，最终顺利完成了实验，可能时间较晚，但是每条代码都是自己心血的结晶，并且在截止时间之前对以前的实验报告进行了修改。学编程不是一件难事但也绝对不是一件简单地事情，这次实验是我对正则表达和Java语言的面向对象有了更深的理解我一定在以后的日子里多学习编程知识。
 
