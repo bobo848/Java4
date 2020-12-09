@@ -77,7 +77,8 @@ public static StringBuffer ReadTxt(String path) {
 ```
 
 ## 6.结果截图
-
+![实验结果](https://github.com/bobo848/Java4/blob/main/1.JPG)  
+![实验结果](https://github.com/bobo848/Java4/blob/main/2.JPG)
 ## 7.实验感想
 #### 最后一次试验了，最终顺利完成了实验，可能时间较晚，但是每条代码都是自己心血的结晶，并且在截止时间之前对以前的实验报告进行了修改。学编程不是一件难事但也绝对不是一件简单地事情，这次实验是我对正则表达和Java语言的面向对象有了更深的理解我一定在以后的日子里多学习编程知识。
 
